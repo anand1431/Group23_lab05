@@ -20,6 +20,18 @@ void GPIO_PORT_F_init(void)
     GPIO_PORTF_IM_R  |= 0x11;
 }
 
+void systick_timer()                           // DEFINING systick_timer FUNCTION
+{
+    systickInit();
+           NVIC_ST_RELOAD_R = 4000000;
+           while((NVIC_ST_CTRL_R & 0x10000)==0)
+                    {
+
+                    }
+           NVIC_ST_CTRL_R = 0x0;
+}
+
+
 
 int main(void)                               // MAIN FUNCTION
 {
